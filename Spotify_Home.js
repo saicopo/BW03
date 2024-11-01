@@ -68,13 +68,14 @@ function mostraAlbum(albumList) {
   albumList.forEach((album) => {
     //DA USARE STESSO FORMAT DI ALBUM PER ARTISTA QUINDI CON A
     const albumCard = `
-        <div class="col-3">
-            <div class="album-card m-3" onclick="location.href='album.html?id=${album.album.id}'">
+        <div class="col-4 col-md-3 album-card justify-content-around ms-auto   m-1">
+            <div class=" m-auto flex-column d-flex align-items-center  " onclick="location.href='album.html?id=${album.album.id}'">
                                 <a href="./album.html?id=${album.album.id}"><img src="${album.album.cover_big}" alt="${album.album.title}" class="album-cover img-fluid" /></a>
                 
-                <a href="./album.html?id=${album.album.id}">${album.album.title}</a>
-
-                <p>Artista: ${album.artist.name}</p>
+                <p class="fw-bolder name_track   btn" href="./album.html?id=${album.album.id}">${album.album.title}</p>
+                  <div class="align-items-center">
+<p class="btn name-artist" onclick="location.href='artist.html?id=${album.artist.id}'; event.stopPropagation();">${album.artist.name}</p>
+ </div>  
             </div>
         </div>    
         `;
@@ -85,14 +86,3 @@ function mostraAlbum(albumList) {
 
 // Chiamata alla funzione al caricamento della pagina
 document.addEventListener("DOMContentLoaded", getRandomAlbums);
-
-//DETTAGLI ALBUM
-
-// Funzione per recuperare l'ID dall'URL e ottenere i dettagli dell'album
-function getAlbumDetails() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const albumId = urlParams.get("id");
-}
-
-// Chiamata alla funzione al caricamento della pagina
-document.addEventListener("DOMContentLoaded", getAlbumDetails);
